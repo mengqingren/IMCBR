@@ -59,17 +59,47 @@ hisat2-build T2T.fa --ss T2T.ss --exon T2T.exon T2T
 
 * Kraken2 Database -> Example
   - Refer to the web [![Kraken2](https://github.com/DerrickWood/kraken2/blob/master/docs/MANUAL.markdown)]
+```
+kraken2-build --standard --db $DBNAME
+kraken2-build --standard --threads 24 --db $DBNAME
+```
 
 * PathSeq2 -> usr build
+  - Refer to the web [![PathSeq2](https://gatk.broadinstitute.org/hc/en-us/articles/360035889911--How-to-Run-the-Pathseq-pipeline)]
 ```
+## Create the FASTA dict
+gatk CreateSequenceDictionary -R T2T.fa
+gatk CreateSequenceDictionary -R microbe.fasta
+## Build FASTA index
+samtools faidx T2T.fa
+samtools faidx microbe.fasta
+## Build the host and microbe BWA index images -> This step will cost much time and memory
+gatk --java-options "-Xmx80G" BwaMemIndexImageCreator -I T2T.fa
+gatk --java-options "-Xmx80G -Djava.io.tmpdir=/gatk_tmp/" BwaMemIndexImageCreator -I microbe.fasta --tmp-dir /gatk_tmp/
+## Generate the host k-mer library file
+gatk PathSeqBuildKmers --reference T2T.fa -O T2T.hss
+## Bulid taxonomy file
+# ftp://ftp.ncbi.nlm.nih.gov/refseq/release/release-catalog/
+# ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdump.tar.gz
+gatk PathSeqBuildReferenceTaxonomy -R microbe.fasta --refseq-catalog RefSeq-release220.catalog.gz --tax-dump taxdump.tar.gz -O microbe.db
 ```
 
 * PathSeq2 in IMCBR
   - When run the **R-RNAMicrobiome.PathSeq2.R** , the requirement for PathSeq including **.dict**,**.fai**,**.img**,**.db** will be generated
 
 ### Quick start
-
-
+- **R-RNAMicrobiome.Kraken2.R** -> This script contains the steps including quality control, mapping, extract unmapped reads, initial microbiome identification with Kraken2
+- **Output** -> .out, .report, .sorted.bam, .unmmaped.bam, .unmmaped.fastq
+```
+## Example 1 : Public PE : SRR15115262
+Rscript R-RNAMicrobiome.Kraken2.R -a SRR15115262 -L PE -x /usr/local/data/index/hisat2_index/hg38/hg38_no_alt -D /data/mengqr/Database/Kraken2.Custom/ 
+## Example 2 : Public SE : SRR14148566
+Rscript R-RNAMicrobiome.Kraken2.R -a SRR14148566 -L SE -x /usr/local/data/index/hisat2_index/hg38/hg38_no_alt -D /data/mengqr/Database/Kraken2.Custom/ 
+## Example 3
+Rscript R-RNAMicrobiome.Kraken2.R -f ${SAMPLENAME}_1.fastq -r ${SAMPLENAME}_2.fastq -P ${SAMPLENAME} -x /usr/local/data/index/hisat2_index/hg38/hg38_no_alt -D /data/mengqr/Database/Kraken2.Custom/
+## Example 4
+Rscript R-RNAMicrobiome.Kraken2.R -U ${SAMPLENAME}.fastq -P ${SAMPLENAME} -x /usr/local/data/index/hisat2_index/hg38/hg38_no_alt -D /data/mengqr/Database/Kraken2.Custom/
+```
 
 
 ### Test data
