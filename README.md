@@ -32,6 +32,55 @@ Clone the github repository into the directory for analyzing the datasets:
   `git clone https://github.com/mengqingren/IMCBR.git`
 
 Install the dependences:
+```
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+source ~/.bashrc
+```
 
-  ``
+```
+conda install R==4.2 gatk4 hisat2 samtools bedtools kraken2 sra-tools
+conda install r-tidyverse r-data.table r-optparse
+```
+### Database
+
+* Hisat2 Index
+```
+```
+
+* Kraken2 Database
+
+
+* PathSeq2 -> usr build
+
+
+* PathSeq2 in IMCBR
+
+
+
+### Quick start
+
+
+
+
+### Test data
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
