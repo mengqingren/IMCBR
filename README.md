@@ -34,9 +34,7 @@ Clone the github repository into the directory for analyzing the datasets:
 Install the dependences:
 ```
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-
 bash Miniconda3-latest-Linux-x86_64.sh
-
 source ~/.bashrc
 ```
 
@@ -67,7 +65,6 @@ hisat2-build T2T.fa --ss T2T.ss --exon T2T.exon T2T
   - Refer to the web [![Kraken2](https://github.com/DerrickWood/kraken2/blob/master/docs/MANUAL.markdown)]
 ```
 kraken2-build --standard --db $DBNAME
-
 kraken2-build --standard --threads 24 --db $DBNAME
 ```
 
@@ -103,11 +100,14 @@ gatk PathSeqBuildReferenceTaxonomy -R microbe.fasta --refseq-catalog RefSeq-rele
 - **Output** -> .out, .report, .sorted.bam, .unmmaped.bam, .unmmaped.fastq
 ```
 ## Example 1 : Public PE : SRR15115262
-Rscript R-RNAMicrobiome.Kraken2.R -a SRR15115262 -L PE -x /usr/local/data/index/hisat2_index/hg38/hg38_no_alt -D /data/mengqr/Database/Kraken2.Custom/ 
+Rscript R-RNAMicrobiome.Kraken2.R -a SRR15115262 -L PE -x /usr/local/data/index/hisat2_index/hg38/hg38_no_alt -D /data/mengqr/Database/Kraken2.Custom/
+
 ## Example 2 : Public SE : SRR14148566
-Rscript R-RNAMicrobiome.Kraken2.R -a SRR14148566 -L SE -x /usr/local/data/index/hisat2_index/hg38/hg38_no_alt -D /data/mengqr/Database/Kraken2.Custom/ 
+Rscript R-RNAMicrobiome.Kraken2.R -a SRR14148566 -L SE -x /usr/local/data/index/hisat2_index/hg38/hg38_no_alt -D /data/mengqr/Database/Kraken2.Custom/
+
 ## Example 3
 Rscript R-RNAMicrobiome.Kraken2.R -f ${SAMPLENAME}_1.fastq -r ${SAMPLENAME}_2.fastq -P ${SAMPLENAME} -x /usr/local/data/index/hisat2_index/hg38/hg38_no_alt -D /data/mengqr/Database/Kraken2.Custom/
+
 ## Example 4
 Rscript R-RNAMicrobiome.Kraken2.R -U ${SAMPLENAME}.fastq -P ${SAMPLENAME} -x /usr/local/data/index/hisat2_index/hg38/hg38_no_alt -D /data/mengqr/Database/Kraken2.Custom/
 ```
