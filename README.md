@@ -34,7 +34,9 @@ Clone the github repository into the directory for analyzing the datasets:
 Install the dependences:
 ```
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+
 bash Miniconda3-latest-Linux-x86_64.sh
+
 source ~/.bashrc
 ```
 
@@ -48,12 +50,16 @@ conda install r-tidyverse r-data.table r-optparse
 ```
 wget https://hgdownload.soe.ucsc.edu/goldenPath/hs1/bigZips/hs1.fa.gz
 gunzip hs1.fa.gz
+
 wget https://hgdownload.soe.ucsc.edu/goldenPath/hs1/bigZips/genes/catLiftOffGenesV1.gtf.gz
 gunzip catLiftOffGenesV1.gtf.gz
+
 mv hs1.fa T2T.fa
 mv catLiftOffGenesV1.gtf T2T.gtf
+
 extract_exons.py T2T.gtf > T2T.exon
 extract_splice_sites.py T2T.gtf > T2T.ss
+
 hisat2-build T2T.fa --ss T2T.ss --exon T2T.exon T2T
 ```
 
@@ -61,6 +67,7 @@ hisat2-build T2T.fa --ss T2T.ss --exon T2T.exon T2T
   - Refer to the web [![Kraken2](https://github.com/DerrickWood/kraken2/blob/master/docs/MANUAL.markdown)]
 ```
 kraken2-build --standard --db $DBNAME
+
 kraken2-build --standard --threads 24 --db $DBNAME
 ```
 
@@ -70,14 +77,18 @@ kraken2-build --standard --threads 24 --db $DBNAME
 ## Create the FASTA dict
 gatk CreateSequenceDictionary -R T2T.fa
 gatk CreateSequenceDictionary -R microbe.fasta
+
 ## Build FASTA index
 samtools faidx T2T.fa
 samtools faidx microbe.fasta
+
 ## Build the host and microbe BWA index images -> This step will cost much time and memory
 gatk --java-options "-Xmx80G" BwaMemIndexImageCreator -I T2T.fa
 gatk --java-options "-Xmx80G -Djava.io.tmpdir=/gatk_tmp/" BwaMemIndexImageCreator -I microbe.fasta --tmp-dir /gatk_tmp/
+
 ## Generate the host k-mer library file
 gatk PathSeqBuildKmers --reference T2T.fa -O T2T.hss
+
 ## Bulid taxonomy file
 # ftp://ftp.ncbi.nlm.nih.gov/refseq/release/release-catalog/
 # ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdump.tar.gz
