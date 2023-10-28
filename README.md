@@ -113,7 +113,11 @@ Rscript R-RNAMicrobiome.Kraken2.R -f ${SAMPLENAME}_1.fastq -r ${SAMPLENAME}_2.fa
 Rscript R-RNAMicrobiome.Kraken2.R -U ${SAMPLENAME}.fastq -P ${SAMPLENAME} -x /usr/local/data/index/hisat2_index/hg38/hg38_no_alt -D /data/mengqr/Database/Kraken2.Custom/
 ```
 #### Step2
-
+-
+-
+```
+Rscript R-Extract.Kraken2.Fastq.R --ReportFile ${name}.report --OutFile ${name}.out --UnmappedFastq ${name}.unmmaped.fastq --ReadsCounts 10 --SampleName ${name} --savePath ./
+```
 
 ### Test data
 
