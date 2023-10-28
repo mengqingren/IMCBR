@@ -93,7 +93,7 @@ gatk PathSeqBuildReferenceTaxonomy -R microbe.fasta --refseq-catalog RefSeq-rele
 ```
 
 * PathSeq2 in IMCBR
-  - When run the **R-RNAMicrobiome.PathSeq2.R** , the requirement for PathSeq including **.dict**,**.fai**,**.img**,**.db** will be generated
+  - When run the **R-RNAMicrobiome.PathSeq2.R** , the requirement for PathSeq including **.dict**, **.fai**, **.img**, **.db** will be generated
 
 ### Quick start
 - **R-RNAMicrobiome.Kraken2.R** -> This script contains the steps including quality control, mapping, extract unmapped reads, initial microbiome identification with Kraken2
