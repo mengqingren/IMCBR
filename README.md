@@ -96,8 +96,9 @@ gatk PathSeqBuildReferenceTaxonomy -R microbe.fasta --refseq-catalog RefSeq-rele
   - When run the **R-RNAMicrobiome.PathSeq2.R** , the requirement for PathSeq including **.dict**, **.fai**, **.img**, **.db** will be generated
 
 ### Quick start
+#### Step1
 - **R-RNAMicrobiome.Kraken2.R** -> This script contains the steps including quality control, mapping, extract unmapped reads, initial microbiome identification with Kraken2
-- **Output** -> .out, .report, .sorted.bam, .unmmaped.bam, .unmmaped.fastq
+- **Output** -> __.out, .report, .sorted.bam, .unmmaped.bam, .unmmaped.fastq__
 ```
 ## Example 1 : Public PE : SRR15115262
 Rscript R-RNAMicrobiome.Kraken2.R -a SRR15115262 -L PE -x /usr/local/data/index/hisat2_index/hg38/hg38_no_alt -D /data/mengqr/Database/Kraken2.Custom/
@@ -111,6 +112,7 @@ Rscript R-RNAMicrobiome.Kraken2.R -f ${SAMPLENAME}_1.fastq -r ${SAMPLENAME}_2.fa
 ## Example 4
 Rscript R-RNAMicrobiome.Kraken2.R -U ${SAMPLENAME}.fastq -P ${SAMPLENAME} -x /usr/local/data/index/hisat2_index/hg38/hg38_no_alt -D /data/mengqr/Database/Kraken2.Custom/
 ```
+#### Step2
 
 
 ### Test data
