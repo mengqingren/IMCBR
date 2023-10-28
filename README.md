@@ -44,19 +44,28 @@ conda install r-tidyverse r-data.table r-optparse
 ```
 ### Database
 
-* Hisat2 Index
+* Hisat2 Index -> Example
 ```
+wget https://hgdownload.soe.ucsc.edu/goldenPath/hs1/bigZips/hs1.fa.gz
+gunzip hs1.fa.gz
+wget https://hgdownload.soe.ucsc.edu/goldenPath/hs1/bigZips/genes/catLiftOffGenesV1.gtf.gz
+gunzip catLiftOffGenesV1.gtf.gz
+mv hs1.fa T2T.fa
+mv catLiftOffGenesV1.gtf T2T.gtf
+extract_exons.py T2T.gtf > T2T.exon
+extract_splice_sites.py T2T.gtf > T2T.ss
+hisat2-build T2T.fa --ss T2T.ss --exon T2T.exon T2T
 ```
 
-* Kraken2 Database
-
+* Kraken2 Database -> Example
+  - Refer to the web [![Kraken2](https://github.com/DerrickWood/kraken2/blob/master/docs/MANUAL.markdown)]
 
 * PathSeq2 -> usr build
-
+```
+```
 
 * PathSeq2 in IMCBR
-
-
+  - When run the **R-RNAMicrobiome.PathSeq2.R** , the requirement for PathSeq including **.dict**,**.fai**,**.img**,**.db** will be generated
 
 ### Quick start
 
