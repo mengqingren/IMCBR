@@ -14,6 +14,9 @@ IMCBR: Infer Microbiome Composition Based on RNA sequencing data
 - refined microbial confirmation with PathSeq in GATK with optional choice for microbial reference (1 user build; 2 extract candidate microbiome reference genomes from Kraken2 library, recommand 2)
 
 ### Dependence
+## Software
+- sra-tools -> Download public datasets
+- 
 
 
 
