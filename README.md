@@ -27,8 +27,11 @@ IMCBR: Infer Microbiome Composition Based on RNA sequencing data
 - python3
 
 ### Installation
-Clone the github repository into the directory for analyzing the datasets
+Clone the github repository into the directory for analyzing the datasets:
 
   git clone https://github.com/mengqingren/IMCBR.git
 
+install the dependences:
+
+  
 
