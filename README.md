@@ -62,7 +62,7 @@ hisat2-build T2T.fa --ss T2T.ss --exon T2T.exon T2T
 ```
 
 * Kraken2 Database -> Example
-  - Refer to the web [![Kraken2](https://github.com/DerrickWood/kraken2/blob/master/docs/MANUAL.markdown)]
+  - Refer to the web ![Kraken2](https://github.com/DerrickWood/kraken2/blob/master/docs/MANUAL.markdown)
 ```
 kraken2-build --standard --db $DBNAME
 kraken2-build --standard --threads 24 --db $DBNAME
@@ -129,8 +129,36 @@ Rscript R-RNAMicrobiome.PathSeq2.R -C RefSeq-release220.catalog.gz -T taxdump.ta
 ```
 
 #### Step4 (Optional)
-- **R-BulkRNA-VOOM+SNM.R** -> VOOM+SNM: normaliztion, however, this step is optional for 
+- **R-BulkRNA-VOOM+SNM.R** -> VOOM+SNM: normaliztion, however, this step is optional for the datasets under specific circumstances
+```
+Rscript R-BulkRNA-VOOM+SNM.R -F ${Projects.Species.Count.csv} -R ${ReadsCountCutoff} -B ${BatchEffectParameters} -C ${Responsor} -M ${Metadata.csv} -S ${SAMPLENAME.VOOM_SNM} -P ./
+```
+#### Step5 (Optional)
+- **R-Boruta.RF.R** -> Run Boruta to identify the candidate biomarkers, construct the random forest model, calculate the evaluation index AUC, F1 score 
 
+```
+conda install r-psych, r-mvtnorm, r-caret, r-PRROC, r-caTools, r-pROC, r-e1071, r-randomForest, r-Boruta, r-mlbench, r-ROSE, r-DMwR
+```
+```
+## Example 1 => VOOM+SNM => Kfold RF
+Rscript R-Boruta.RF.R -F ${Project.VOOMSNM.VOOM.SNM.Object.csv} -M ${Metadata.csv} -V TRUE -c ${Responsor} -m All -B Original -f Kfolds -S ${SAMPLENAME} -T 2 -K 5
+
+## Example 2 => VOOM+SNM => Split RF
+Rscript R-Boruta.RF.R -F ${Project.VOOMSNM.VOOM.SNM.Object.csv} -M ${Metadata.csv} -V TRUE -c ${Responsor} -m All -B Original -f Split -S ${SAMPLENAME} -T 5
+
+## Example 3 => Count -> CPM -> Boruta -> Original -> Kfold
+Rscript R-Boruta.RF.R -F ${Project.Species.Count.csv} -R ${ReadsCountCutoff} -C ${RelativeAbundanceCutoff} -M ${Metadata.csv} -V FALSE -c ${Responsor} -m Boruta -B Original -f Kfolds -S ${SAMPLENAME} -T 1 -K 5
+
+## Example 4 => Count -> CPM -> All -> Split -> SMOTE
+Rscript R-Boruta.RF.R -F ${Project.Species.Count.csv} -R ${ReadsCountCutoff} -C ${RelativeAbundanceCutoff} -M ${Metadata.csv} -V FALSE -c ${Responsor} -m All -B SMOTE -f Split -S ${SAMPLENAME} -T 5
+```
+
+**NOTE**
+The instruction for these scripts can be obtained using `- h`
+```
+Rscript R-RNAMicrobiome.Kraken2.R -h
+Rscript R-RNAMicrobiome.PathSeq2.R -h
+```
 
 ### Examples
 
