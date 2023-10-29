@@ -69,7 +69,7 @@ kraken2-build --standard --threads 24 --db $DBNAME
 ```
 
 * PathSeq2 -> usr build
-  - Refer to the web [![PathSeq2](https://gatk.broadinstitute.org/hc/en-us/articles/360035889911--How-to-Run-the-Pathseq-pipeline)]
+  - Refer to the web ![PathSeq](https://gatk.broadinstitute.org/hc/en-us/articles/360035889911--How-to-Run-the-Pathseq-pipeline)
 ```
 ## Create the FASTA dict
 gatk CreateSequenceDictionary -R T2T.fa
