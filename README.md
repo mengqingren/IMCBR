@@ -161,8 +161,17 @@ Rscript R-RNAMicrobiome.PathSeq2.R -h
 ```
 
 ### Examples
+This dataset accession is PRJNA746129 in EBI, concerned about the pathogenesis of CRC liver metastasis. The final out file in __Examples__ dir.
+```
+## Download file, quality control, mapping, kraken2
+for i in `seq 2 8`; do Rscript R-RNAMicrobiome.Kraken2.R -a SRR1511526${i} -L PE -x ~/hg38/hg38_no_alt -D /data/mengqr/Database/Kraken2.Custom/;done
 
+## Extract candidate fastq
+ls SRR1511526*.out | while read id; do name=$(basename $id | cut -d . -f 1); Rscript R-Extract.Kraken2.Fastq.R --ReportFile ${name}.report --OutFile ${name}.out --UnmappedFastq ${name}.unmmaped.fastq --ReadsCounts 10 --SampleName ${name} --savePath ./; done
 
+## PathSeq
+Rscript R-RNAMicrobiome.PathSeq2.R -C RefSeq-release220.catalog.gz -T taxdump.tar.gz -H GRCh38.fa -D ../Kraken2.Custom/ -P ./
+```
 
 
 
