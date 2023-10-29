@@ -113,13 +113,26 @@ Rscript R-RNAMicrobiome.Kraken2.R -f ${SAMPLENAME}_1.fastq -r ${SAMPLENAME}_2.fa
 Rscript R-RNAMicrobiome.Kraken2.R -U ${SAMPLENAME}.fastq -P ${SAMPLENAME} -x /usr/local/data/index/hisat2_index/hg38/hg38_no_alt -D /data/mengqr/Database/Kraken2.Custom/
 ```
 #### Step2
--
--
+- **R-Extract.Kraken2.Fastq.R** -> This script screens out candidate microbiome with the __reads count (usr input)__ and __prevalence >= 3 samples (in script)__, then extract the candidate species fastq sequences
+- **Output** -> __.Kraken2.fastq, .Kraken2.Fastq.ID.txt, .Kraken2.Species.ID.txt__
 ```
-Rscript R-Extract.Kraken2.Fastq.R --ReportFile ${name}.report --OutFile ${name}.out --UnmappedFastq ${name}.unmmaped.fastq --ReadsCounts 10 --SampleName ${name} --savePath ./
+Rscript R-Extract.Kraken2.Fastq.R --ReportFile ${name}.report --OutFile ${SAMPLENAME}.out --UnmappedFastq ${SAMPLENAME}.unmmaped.fastq --ReadsCounts 10 --SampleName ${SAMPLENAME} --savePath ./
 ```
 
-### Test data
+#### Step3
+- **R-RNAMicrobiome.PathSeq2.R** -> Refine microbiome reads using PathSeq, integrate the microbiome composistion across the samples
+- **Output** -> __.pathseq.bam, .pathseq.bam.sbi, .PathSeq.Mapped.txt, .pathseq.txt, Project.Kraken2.Species.ID.txt__
+- **Importance output** -> __Project.Kraken2_PathSeq.Species_Count.csv, Project.Kraken2_PathSeq.Species_Count_Matrix.csv__
+- ***Note***: This step will __cost much time and momery__
+```
+Rscript R-RNAMicrobiome.PathSeq2.R -C RefSeq-release220.catalog.gz -T taxdump.tar.gz -H GRCh38.fa -D ../Kraken2.Custom/ -P ./
+```
+
+#### Step4 (Optional)
+- **R-BulkRNA-VOOM+SNM.R** -> VOOM+SNM: normaliztion, however, this step is optional for 
+
+
+### Examples
 
 
 
