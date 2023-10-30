@@ -153,6 +153,9 @@ Rscript R-Boruta.RF.R -F ${Project.Species.Count.csv} -R ${ReadsCountCutoff} -C 
 Rscript R-Boruta.RF.R -F ${Project.Species.Count.csv} -R ${ReadsCountCutoff} -C ${RelativeAbundanceCutoff} -M ${Metadata.csv} -V FALSE -c ${Responsor} -m All -B SMOTE -f Split -S ${SAMPLENAME} -T 5
 ```
 
+### Step 6 Denoise (Optional)
+This step focuses on denoise based on the provided list of microorganisms that may be contaminants in `Denoise_Species_list.txt` (__Not in IMCBR__), which can be excluded according to the needs of the USER.
+
 **NOTE**
 The instruction for these scripts can be obtained using `- h`
 ```
