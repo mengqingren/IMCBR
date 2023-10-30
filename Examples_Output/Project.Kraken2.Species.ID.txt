@@ -1,0 +1,92 @@
+Acidovorax sp. 16-35-5	2743470
+Acidovorax sp. JMULE5	2518343
+Acinetobacter baumannii	470
+Acinetobacter guillouiae	106649
+Acinetobacter johnsonii	40214
+Acinetobacter lwoffii	28090
+Aquabacterium olei	1296669
+Bacillus cereus	1396
+Bacillus megaterium	1404
+Bacillus thuringiensis	1428
+Bifidobacterium dentium	1689
+Bordetella sp. H567	1697043
+Bordetella trematum	123899
+Bradyrhizobium guangzhouense	1325095
+Bradyrhizobium sp. BTAi1	288000
+Brevundimonas diminuta	293
+Brevundimonas naejangsanensis	588932
+Brevundimonas sp. Bb-A	2560058
+Burkholderia contaminans	488447
+Burkholderia pseudomallei	28450
+Campylobacter geochelonis	1780362
+Candidatus Rickettsiella viridis	676208
+Caulobacter mirabilis	69666
+Clostridium botulinum	1491
+Clostridium tetani	1513
+Comamonas kerstersii	225992
+Cupriavidus pauculus	82633
+Curtobacterium sp. Csp2	2495430
+Cutibacterium acnes	1747
+Delftia tsuruhatensis	180282
+Escherichia coli	562
+Flavobacteriaceae bacterium MAR_2010_188	1250295
+Glaesserella sp. 15-184	2030797
+Halomonas sp. JS92-SW72	2306583
+Hydrogenophaga sp. NH-16	2184519
+Janibacter melonis	262209
+Klebsiella oxytoca	571
+Klebsiella pneumoniae	573
+Lachnospiraceae bacterium oral taxon 500	712991
+Lactobacillus plantarum	1590
+Limnobacter sp. SAORIC-580	2732163
+Mariprofundus aestuarium	1921086
+Methylobacterium brachiatum	269660
+Methylobacterium sp. 17Sr1-43	2202828
+Methylobacterium sp. C1	1479019
+Methylomonas clara	417
+Methyloversatilis sp. RAC08	1842540
+Micrococcus luteus	1270
+Mitsuaria sp. 7	1658665
+Moraxella osloensis	34062
+Mycolicibacterium fallax	1793
+Mycolicibacterium phocaicum	319706
+Mycoplasma hyorhinis	2100
+Neisseria zalophi	640030
+Nostoc sp. NIES-4103	2005458
+Ochrobactrum pseudogrignonense	419475
+Pantoea agglomerans	549
+Paracoccus mutanolyticus	1499308
+Porphyrobacter neustonensis	1112
+Pseudomonas aeruginosa	287
+Pseudomonas fluorescens	294
+Pseudomonas putida	303
+Pseudomonas tolaasii	29442
+Ralstonia insidiosa	190721
+Ralstonia pickettii	329
+Ralstonia solanacearum	305
+Rhodococcus fascians	1828
+Rhodococcus sp. PBTS 2	1653479
+Rhodococcus sp. W8901	2742603
+Rhodoferax koreense	1842727
+Sphingobium hydrophobicum	1673076
+Sphingomonas melonis	152682
+Sphingomonas paucimobilis	13689
+Sphingomonas sp. LK11	1390395
+Staphylococcus aureus	1280
+Staphylococcus haemolyticus	1283
+Stenotrophomonas maltophilia	40324
+Synechococcus sp. PCC 7336	195250
+Tenacibaculum dicentrarchi	669041
+Thalassotalea sp. PS06	2594005
+Thermaerobacter sp. FW80	2546351
+Tumebacillus algifaecis	1214604
+Vulgatibacter incomptus	1391653
+Xanthomonas arboricola	56448
+Xanthomonas campestris	339
+Xanthomonas citri	346
+Xanthomonas cucurbitae	56453
+Xanthomonas euvesicatoria	456327
+Xanthomonas hortorum	56454
+Xanthomonas oryzae	347
+Xanthomonas vasicola	56459
+Xanthomonas vesicatoria	56460
