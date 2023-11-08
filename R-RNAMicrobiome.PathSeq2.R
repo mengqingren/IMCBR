@@ -43,7 +43,7 @@ for (file in files) {
 	rbind.data.frame(Species_Taxid)
 }
 Species_Taxid <- Species_Taxid %>% group_by(Species,taxid) %>% dplyr::summarise(Count=n()) %>% filter(Count>=3) %>% dplyr::select(Species,taxid)
-write.table(Species_Taxid,file="Project.Kraken2.Species.ID.txt",row.names=F,sep="\t",col.names=F,quote=F)
+write.table(Species_Taxid,file="Project.Kraken2.Species.ID.txt",row.names=F,sep="\t",col.names=T,quote=F)
 if(! file.exists(opt$GRCh38)){
 	stop("Cannot find host reference", call.=FALSE)
 }
