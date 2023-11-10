@@ -65,11 +65,11 @@ if(gatk_exec == 1){
 }
 
 #### Extract microbiota referrence fasta
-Extract_exec = paste("python Extract.Microbe.Fasta.py --Kraken2DB ", opt$Kraken2DB ," --TaxidFile Project.Kraken2.Species.ID.txt --Output microbe.fa --OutputRef Ref_Microbe.txt",sep="")
-print(Extract_exec)
-system(Extract_exec)
 if(! file.exists("microbe.fa")){
-	stop("Cannot find microbe.fa reference, plaease note the KrakenDB path", call.=FALSE)
+	Extract_exec = paste("python Extract.Microbe.Fasta.py --Kraken2DB ", opt$Kraken2DB ," --TaxidFile Project.Kraken2.Species.ID.txt --Output microbe.fa --OutputRef Ref_Microbe.txt",sep="")
+	print(Extract_exec)
+	system(Extract_exec)
+	#stop("Cannot find microbe.fa reference, plaease note the KrakenDB path", call.=FALSE)
 } 
 
 print("Begin PathSeq")
@@ -85,7 +85,7 @@ if(! file.exists("GRCh38.dict")){
 	system(paste("gatk CreateSequenceDictionary -R GRCh38.fa",sep=""))
 }
 if(! file.exists("microbe.dict")){
-system(paste("gatk CreateSequenceDictionary -R microbe.fa",sep=""))
+	system(paste("gatk CreateSequenceDictionary -R microbe.fa",sep=""))
 }
 #### Build Reference faidx
 if(! file.exists("GRCh38.fa.fai")){
@@ -100,7 +100,7 @@ if(! file.exists("GRCh38.fa.img")){
 }
 #system(paste("gatk BwaMemIndexImageCreator -I microbe.fa",sep=""))
 if( ! file.exists("microbe.fa.img")){
-system(paste("gatk --java-options '-Djava.io.tmpdir=./' BwaMemIndexImageCreator -I microbe.fa --tmp-dir ./",sep=""))
+	system(paste("gatk --java-options '-Djava.io.tmpdir=./' BwaMemIndexImageCreator -I microbe.fa --tmp-dir ./",sep=""))
 }
 #### Build Host Reference Kmer
 if(! file.exists("GRCh38.hss")){
