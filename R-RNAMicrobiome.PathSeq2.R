@@ -104,7 +104,7 @@ if( ! file.exists("microbe.fa.img")){
 }
 #### Build Host Reference Kmer
 if(! file.exists("GRCh38.hss")){
-	system(paste("gatk --java-options '-Xmx40G' PathSeqBuildKmers --reference GRCh38.fa -O GRCh38.hss",sep=""))
+	system(paste("gatk --java-options '-Xmx120G' PathSeqBuildKmers --reference GRCh38.fa -O GRCh38.hss",sep=""))
 }
 #### Build Microbial DB 
 if(! file.exists("microbe.db")){
