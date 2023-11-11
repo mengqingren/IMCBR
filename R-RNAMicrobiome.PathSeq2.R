@@ -108,7 +108,7 @@ if(! file.exists("GRCh38.hss")){
 }
 #### Build Microbial DB 
 if(! file.exists("microbe.db")){
-system(paste("gatk PathSeqBuildReferenceTaxonomy -R microbe.fa --refseq-catalog ",opt$Catalog," --tax-dump ",opt$Taxonomy," -O microbe.db",sep=""))
+	system(paste("gatk --java-options '-Xmx120G' PathSeqBuildReferenceTaxonomy -R microbe.fa --refseq-catalog ",opt$Catalog," --tax-dump ",opt$Taxonomy," -O microbe.db",sep=""))
 }
 #### Run
 files <- list.files(path=opt$savePath,pattern=".Kraken2.fastq")
@@ -117,7 +117,7 @@ for (file in files){
 	### fastqtobam
 	system(paste("gatk FastqToSam --FASTQ ",file," --OUTPUT ",filename,".bam --SAMPLE_NAME ",filename,sep=""))
 	### Run PathSeq
-	PathSeq_exec = paste("gatk PathSeqPipelineSpark --input ",filename, ".bam",
+	PathSeq_exec = paste("gatk --java-options '-Xmx300G' PathSeqPipelineSpark --input ",filename, ".bam",
 		" --filter-bwa-image GRCh38.fa.img --kmer-file GRCh38.hss --min-clipped-read-length 40 ",
 		"--microbe-bwa-image microbe.fa.img ",
 		"--microbe-dict  microbe.dict ",
