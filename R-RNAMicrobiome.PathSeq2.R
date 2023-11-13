@@ -71,7 +71,9 @@ if(! file.exists("microbe.fa")){
 	system(Extract_exec)
 	#stop("Cannot find microbe.fa reference, plaease note the KrakenDB path", call.=FALSE)
 } 
-
+if(! file.exists("microbe.fa")){
+stop("Cannot generate and find the microbe.fa", call.=FALSE)
+}
 print("Begin PathSeq")
 #### ln host reference
 print("Build Soft Linking")
