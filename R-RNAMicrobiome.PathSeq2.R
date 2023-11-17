@@ -87,7 +87,7 @@ if(! file.exists("GRCh38.dict")){
 	system(paste("gatk CreateSequenceDictionary -R GRCh38.fa",sep=""))
 }
 if(! file.exists("microbe.dict")){
-	system(paste("gatk CreateSequenceDictionary -R microbe.fa",sep=""))
+	system(paste("gatk CreateSequenceDictionary -R microbe.fa --java-options '-Xmx160G'",sep=""))
 }
 #### Build Reference faidx
 if(! file.exists("GRCh38.fa.fai")){
@@ -110,7 +110,7 @@ if(! file.exists("GRCh38.hss")){
 }
 #### Build Microbial DB 
 if(! file.exists("microbe.db")){
-	system(paste("gatk --java-options '-Xmx120G' PathSeqBuildReferenceTaxonomy -R microbe.fa --refseq-catalog ",opt$Catalog," --tax-dump ",opt$Taxonomy," -O microbe.db",sep=""))
+	system(paste("gatk --java-options '-Xmx150G' PathSeqBuildReferenceTaxonomy -R microbe.fa --refseq-catalog ",opt$Catalog," --tax-dump ",opt$Taxonomy," -O microbe.db",sep=""))
 }
 #### Run
 files <- list.files(path=opt$savePath,pattern=".Kraken2.fastq")
