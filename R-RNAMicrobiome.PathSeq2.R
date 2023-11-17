@@ -87,7 +87,7 @@ if(! file.exists("GRCh38.dict")){
 	system(paste("gatk CreateSequenceDictionary -R GRCh38.fa",sep=""))
 }
 if(! file.exists("microbe.dict")){
-	system(paste("gatk CreateSequenceDictionary -R microbe.fa --java-options '-Xmx160G'",sep=""))
+	system(paste("gatk CreateSequenceDictionary -R microbe.fa --java-options '-Xmx120G'",sep=""))
 }
 #### Build Reference faidx
 if(! file.exists("GRCh38.fa.fai")){
