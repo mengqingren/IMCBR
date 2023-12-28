@@ -22,7 +22,7 @@ IMCBR: Infer Microbiome Composition Based on RNA sequencing data
 - bedtools
 - kraken2
 - seqkit
-- gatk4
+- gatk4 Version:4.4.0.0
 - R packages
 - python3
 
