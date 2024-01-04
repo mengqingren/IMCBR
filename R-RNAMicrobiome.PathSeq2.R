@@ -141,11 +141,13 @@ for (file in files){
 	system(paste("samtools view -F 4 ",file," | cut -f 1,3 > ", filename, ".PathSeq.Mapped.txt",sep=""))
 	pathseq_taxid = fread("Ref_Microbe.txt",header=F,col.names=c("RefID","Species","Taxid")) %>%
 	mutate(Species=str_remove_all(Species,"\\|.*")) %>% mutate(RefID=str_remove_all(RefID,">"))
-	pathseq_map = fread(paste(filename, ".PathSeq.Mapped.txt",sep=""),header=F,col.names=c("ID","RefID")) %>% merge(pathseq_taxid,by="RefID")
-	kraken2_pathseq <- merge(pathseq_map,kraken2_taxid,by=c("ID","Species","Taxid"))
-	write.csv(kraken2_pathseq,file=paste(filename,".kraken2_pathseq.id_taxonomy.csv",sep=""),quote=F,row.names=F)
-	Species_Count <- kraken2_pathseq %>% group_by(Species,Taxid) %>% dplyr::summarise(Count=n()) %>% mutate(Sample=filename) %>% 
-	rbind.data.frame(Species_Count)
+	pathseq_map = fread(paste(filename, ".PathSeq.Mapped.txt",sep=""),header=F,col.names=c("ID","RefID")) 
+	if(dim(pathseq_map)[1] != 0){
+		pathseq_map <- pathseq_map %>% merge(pathseq_taxid,by="RefID")
+		kraken2_pathseq <- merge(pathseq_map,kraken2_taxid,by=c("ID","Species","Taxid"))
+		write.csv(kraken2_pathseq,file=paste(filename,".kraken2_pathseq.id_taxonomy.csv",sep=""),quote=F,row.names=F)
+		Species_Count <- kraken2_pathseq %>% group_by(Species,Taxid) %>% dplyr::summarise(Count=n()) %>% mutate(Sample=filename) %>% rbind.data.frame(Species_Count)
+	}
 }
 write.csv(Species_Count,file="Project.Kraken2_PathSeq.Species_Count.csv",row.names=F,quote=F)
 
