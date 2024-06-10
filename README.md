@@ -116,7 +116,7 @@ Rscript R-RNAMicrobiome.Kraken2.R -U ${SAMPLENAME}.fastq -P ${SAMPLENAME} -x /us
 - **R-Extract.Kraken2.Fastq.R** -> This script screens out candidate microbiome with the __reads count (usr input)__ and __prevalence >= 3 samples (in script)__, then extract the candidate species fastq sequences
 - **Output** -> __.Kraken2.fastq, .Kraken2.Fastq.ID.txt, .Kraken2.Species.ID.txt__
 ```
-Rscript R-Extract.Kraken2.Fastq.R --ReportFile ${name}.report --OutFile ${SAMPLENAME}.out --UnmappedFastq ${SAMPLENAME}.unmmaped.fastq --ReadsCounts 10 --SampleName ${SAMPLENAME} --savePath ./
+Rscript R-Extract.Kraken2.Fastq.R --ReportFile ${SAMPLENAME}.report --OutFile ${SAMPLENAME}.out --UnmappedFastq ${SAMPLENAME}.unmmaped.fastq --ReadsCounts 10 --SampleName ${SAMPLENAME} --savePath ./
 ```
 
 #### Step3
